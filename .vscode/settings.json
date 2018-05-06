@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "plot.h": "c",
+        "stdio.h": "c"
+    }
+}
