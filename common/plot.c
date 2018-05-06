@@ -48,7 +48,7 @@ void SetCanvas(cplot *self, int row, int column)
     self->__Canv->makeCanvas(self->__Canv, row, column);
     self->__Canv->clearCanvas(self->__Canv);
 }
-void PlotReal(cplot *self, RealFuncSV(func), char mark)
+void PlotReal(cplot *self,Func_RealSV func, char mark)
 {
     double step = (self->__xSup - self->__xInf) / (20 * self->__Canv->column);
     double idx;

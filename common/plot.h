@@ -18,7 +18,7 @@ struct cplot{
     int __boundSetFlag;
     int __showAxiesFlag;
     canvas *__Canv;
-    void (*plotReal)(cplot * self,RealFuncSV(func),char mark);
+    void (*plotReal)(cplot * self,Func_RealSV func,char mark);
     void (*setBound)(cplot * self,double xI,double xS,double yI,double yS);
     void (*setCanvas)(cplot * self,int row, int column);
     void (*printToScreen)(cplot * self,char *title);
