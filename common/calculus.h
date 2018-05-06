@@ -4,6 +4,7 @@
 #ifndef CALCULUS_H_
 #define CALCULUS_H_
 
+#define SIZEOF_PAIR (sizeof(pair));
 /*!c++中std::pair的极简实现
     不能用C++, 我也很绝望啊.
  */
@@ -27,7 +28,7 @@ double integrateRealSV(double inf, double sup,Func_RealSV, double step);
     \param func1 要卷积的第一个函数
     \param func2 要卷积的第二个函数
     \param step 要卷积的部长
-    \return 返回一个pair类型的数组表示数值结果。数组的长度由卷积区间和卷积部长确定
+    \return 返回一个pair类型的数组表示数值结果。数组的长度由卷积区间和卷积部长确定。数组的0位存储着1-index的长度。(1-index意为着需要realloc 1+x*sizeof(pair)的长度)
     Warning:注意内存管理，返回的pair数组存储在堆上！
  */
 pair *convolution(pair range1, pair range2, Func_RealSV func1, Func_RealSV func2, double step);

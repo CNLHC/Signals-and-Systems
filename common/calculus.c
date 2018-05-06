@@ -34,3 +34,4 @@ pair *convolution(pair range1, pair range2, Func_RealSV func1, Func_RealSV func2
     }
     return pairList;
 }
+
