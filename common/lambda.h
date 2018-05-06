@@ -1,0 +1,1 @@
+#define Lambda(c_) ({ c_ _; })
