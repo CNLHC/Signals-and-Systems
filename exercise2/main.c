@@ -1,12 +1,19 @@
 #include <stdio.h>
 #include <math.h>
+#include <complex.h>
 #include "plot.h"
 #include "lambda.h"
 #include "functype.h"
 
 void inputFrequencyDomain();
 int main(){
-    inputFrequencyDomain();
+    // inputFrequencyDomain();
+    double complex a=1+2*I;
+    printf("%lf+%lfi\n",creal( cexp(a)),cimag(cexp(a)));
+
+    
+    
+
 
     
     
