@@ -8,8 +8,7 @@
 /*!c++中std::pair的极简实现
     不能用C++, 我也很绝望啊.
  */
-typedef struct pair_double_double
-{
+typedef struct pair_double_doublec{
     double first;
     double second;
 } pair;
@@ -32,6 +31,14 @@ double integrateRealSV(double inf, double sup,Func_RealSV, double step);
     Warning:注意内存管理，返回的pair数组存储在堆上！
  */
 pair *convolution(pair range1, pair range2, Func_RealSV func1, Func_RealSV func2, double step);
+
+/*!计算位于直角坐标系中两点的间距和夹角
+    \param  pointer1  pair_double_double 类型 第一个点的坐标
+    \param  pointer1  pair_double_double 类型 第二个点的坐标
+    \return  返回一个pair类型，第一个值代表模值，第二个值代表角度
+ */
+pair modAngel(pair point1, pair point2);
+
 
 #endif
 

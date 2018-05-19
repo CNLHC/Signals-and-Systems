@@ -3,10 +3,11 @@ CC=gcc
 BUILD_DIR=./build/
 CUSTOM_DEPS = main.c
 
-CFLAGS=-g -I. -I$(COMMON_DIR)
+CFLAGS=-g -lm -I. -I$(COMMON_DIR)
 
 COMMON_DIR = ../common/
-COMMON_DEPS = canvas.c plot.c functype.c calculus.c
+COMMON_DEPS = canvas.c plot.c functype.c calculus.c  transferFunction.c
+
 COMMON_DEPS_ABS = $(addprefix $(COMMON_DIR), $(COMMON_DEPS))
 COMMON_DEPS_HEAD = $(addsuffix .h,$(basename $(COMMON_DEPS)) )
 
@@ -33,7 +34,7 @@ test:
 	@echo $(DEPS)
 	@echo $(addprefix $(BUILD_DIR),$(notdir $(OBJS)))
 clean:
-	del exercise.exe
+	rm main
 	cd $(BUILD_DIR) &&\
-	del *.o
+	rm *.o
 

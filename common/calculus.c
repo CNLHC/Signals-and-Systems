@@ -1,3 +1,4 @@
+#include <math.h>
 #include "functype.h"
 #include "calculus.h"
 #include "lambda.h"
@@ -34,4 +35,15 @@ pair *convolution(pair range1, pair range2, Func_RealSV func1, Func_RealSV func2
     }
     return pairList;
 }
+
+pair modAngel(pair p1, pair p2){
+    pair out;
+    out.first= sqrt(pow(p1.first-p2.first,2)+pow(p1.second-p2.second,2));
+    out.second=atan((p1.second-p2.second)/(p1.first-p2.first));
+    return out;
+}
+
+
+
+
 
