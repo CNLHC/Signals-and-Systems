@@ -11,7 +11,8 @@ struct transferFunc{
     double complex* _polars;
     void (*setZeros)(transferFunc * self, double complex * zeros);
     void (*setPolars)(transferFunc * self, double complex *polars);
-    double (*H) (transferFunc *self, double w);
+    double (*AFfunc) (transferFunc *self, double w);
+    double (*PFfunc) (transferFunc *self, double w);
 };
 
 transferFunc* transferFunc_construct();

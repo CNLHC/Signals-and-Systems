@@ -55,12 +55,12 @@ int main()
     transferFunc * Hobj = transferFunc_construct();
     Hobj ->setZeros(Hobj,zeros);
     Hobj ->setPolars(Hobj,polars);
-    printf("%lf",Hobj->H(Hobj,6));
+    printf("%lf",Hobj->AFfunc(Hobj,6));
 
     cplot *plter=cplot_construct(NULL);
-    plter->setBound(plter,-10,10,0,7);
-    plter->setCanvas(plter,60,120);
-    plter->plotReal(plter,Lambda(double _(double x){return Hobj->H(Hobj,x);}),'+');
+    plter->setBound(plter,-10,10,-3.5,3.5);
+    plter->setCanvas(plter,40,180);
+    plter->plotReal(plter,Lambda(double _(double x){return Hobj->PFfunc(Hobj,x);}),'+');
     plter->printToScreen(plter,"Input Signal in Frequency Domain");
 
 }
