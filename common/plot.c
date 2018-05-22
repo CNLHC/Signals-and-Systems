@@ -33,6 +33,7 @@ int __MapY2Row(cplot *self, double y)
 }
 void SetBound(cplot *self, double xI, double xS, double yI, double yS)
 {
+    assert(self->__Canv!=NULL&&"对象没有正常初始化:Canvas为空");
     assert(xI <= xS && "x坐标轴边界条件错误");
     assert(xI <= xS && "y坐标轴边界条件错误");
     self->__xInf = xI;
@@ -92,6 +93,15 @@ void PrintToScreen(cplot *self,char *title)
         
     }
 }
+int PlotPointWithNote(cplot *self, double xI, double yI,char mark){
+    assert(self->__Canv!=NULL&&"对象没有正常初始化:Canvas为空");
+    if (xI<=self->__xInf||xI>=self->__xSup)return 1;
+    if (yI<=self->__yInf||yI>=self->__ySup)return 1;
+    int Col=self->__mapX2Col(self,xI);
+    int Row=self->__mapY2Row(self,yI);
+    canvas *boundCanv = self->__Canv;
+    boundCanv->setPoint(boundCanv,Row,Col,mark);
+}
 
 cplot *cplot_construct(cplot *obj)
 {
@@ -116,6 +126,8 @@ cplot *cplot_construct(cplot *obj)
     obj->setBound = &SetBound;
     obj->setCanvas = &SetCanvas;
     obj->printToScreen = &PrintToScreen;
+    obj->plotPointWithNote =  &PlotPointWithNote;
+
 
     return obj;
 }
