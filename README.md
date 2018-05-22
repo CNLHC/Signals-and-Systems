@@ -10,6 +10,22 @@
 2. 基于 `GCC` 编译器所支持的`statement expression`特性的C语言**Lambda表达式**.
 
 
+# 关于实现HOF时的一些奇怪现象
+
+
+用这样的方式实现高阶函数，那么返回的函数只能调用一次
+
+    Func_RealSV GetAffunc(int k){ 
+        return Lambda(double _(double x){return k*x;});
+    }
+
+但是用这样的方式实现高阶函数，那么可以实现高阶函数的功能。
+
+    Func_RealSV GetAffunc(int s){ 
+        int k=s;
+        return Lambda(double _(double x){return k*x;});
+    }
+
 
 
 

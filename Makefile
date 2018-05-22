@@ -1,5 +1,5 @@
 all:
-	cd exercise2&&make
+	cd exercise3&&make
 .PHONY: test,clean
 clean:
-	cd exercise2&&make clean
+	cd exercise3&&make clean

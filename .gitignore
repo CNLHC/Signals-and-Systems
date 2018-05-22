@@ -2,3 +2,5 @@ answerRef
 *build*
 *.o
 *.exe
+.idea/modules.xml
+*.xml

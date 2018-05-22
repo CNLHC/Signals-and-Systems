@@ -39,7 +39,8 @@
                 "path": [
                     "/usr/include",
                     "/usr/local/include",
-                    "${workspaceFolder}"
+                    "${workspaceFolder}",
+                    "${workspaceFolder}/common/"
                 ],
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": ""
