@@ -30,11 +30,11 @@ void ClearCanvas(canvas *self)
             self->canvasHead[i][j] = self->__blankSymbol;
 }
 //设置点
-void SetPoint(canvas *self, int x, int y, char mark)
+void SetPoint(canvas *self, int row, int col, char mark)
 {
-    if (x > self->column - 1 || y > self->row- 1 || x<0 || y<0)
+    if (col > self->column - 1 || row > self->row- 1 || row<0 || col<0)
         return;
-    self->canvasHead[y][x] = mark;
+    self->canvasHead[row][col] = mark;
 }
 //设置空白标识符
 void SetBlankSymbol(canvas *self, char mark)
