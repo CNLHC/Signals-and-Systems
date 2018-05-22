@@ -25,9 +25,18 @@ struct canvas
      */
     void (*setPoint)(canvas *self, int row, int column, char mark);
     void (*setBlankSymbol)(canvas *self, char mark);
+    /*!
+     *
+     * @param self 对象
+     * @param row  行数
+     * @param column  列数
+     * @return  该点是否为空 1-空 0-非空
+     */
+    int (*isBlank)(canvas *self,int row,int column);
+
 
     /*!
-     * Canvs中表示空白的符号
+     * Canvs中表示空白的符
      */
     char __blankSymbol;
     /*!

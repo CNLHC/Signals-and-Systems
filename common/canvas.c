@@ -29,6 +29,14 @@ void ClearCanvas(canvas *self)
         for (j = 0; j < self->column; j++)
             self->canvasHead[i][j] = self->__blankSymbol;
 }
+int IsBlank(canvas *self,int row,int col){
+    assert(self->hasCanvas(self) && ("尝试清除尚未分配画布内存对象的画布"));
+    if (col > self->column - 1 || row > self->row- 1 || row<0 || col<0)
+        return 0;
+    if(self->canvasHead[row][col]!=self->__blankSymbol)
+        return 0;
+    return 1;
+}
 //设置点
 void SetPoint(canvas *self, int row, int col, char mark)
 {
@@ -60,5 +68,6 @@ canvas *canvas_construct(canvas *self)
     self->makeCanvas = &MakeCanvas;
     self->setPoint = &SetPoint;
     self->setBlankSymbol = &SetBlankSymbol;
+    self->isBlank=&IsBlank;
     return self;
 }

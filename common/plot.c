@@ -55,9 +55,9 @@ void PlotReal(cplot *self,Func_RealSV func, char mark)
     double idx;
     for (idx = self->__xInf; idx <= self->__xSup; idx += step)
     {
-        int x = self->__mapX2Col(self, idx);
-        int y = self->__mapY2Row(self, func(idx));
-        self->__Canv->setPoint(self->__Canv, x, y, mark);
+        int col = self->__mapX2Col(self, idx);
+        int row = self->__mapY2Row(self, func(idx));
+        self->__Canv->setPoint(self->__Canv, row, col, mark);
     }
 }
 void PrintToScreen(cplot *self,char *title)
@@ -95,12 +95,27 @@ void PrintToScreen(cplot *self,char *title)
 }
 int PlotPointWithNote(cplot *self, double xI, double yI,char mark){
     assert(self->__Canv!=NULL&&"对象没有正常初始化:Canvas为空");
+    char pattern[]="-(%.1lf,%.1lf)";
     if (xI<=self->__xInf||xI>=self->__xSup)return 1;
     if (yI<=self->__yInf||yI>=self->__ySup)return 1;
     int Col=self->__mapX2Col(self,xI);
     int Row=self->__mapY2Row(self,yI);
     canvas *boundCanv = self->__Canv;
     boundCanv->setPoint(boundCanv,Row,Col,mark);
+    int tR =Row;
+    for (tR;tR<=Row+2;tR++){
+        int tc =Col+1;
+        char tS[11];
+        sprintf(tS,pattern,xI,yI);
+        for (int i=0;i<=10;i++){
+            boundCanv->setPoint(boundCanv,tR,tc+i,tS[i]);
+        }
+        return 0;
+    }
+    return 1;
+}
+void CleanCanvas(cplot * self){
+    self->__Canv->clearCanvas(self->__Canv);
 }
 
 cplot *cplot_construct(cplot *obj)
@@ -127,6 +142,7 @@ cplot *cplot_construct(cplot *obj)
     obj->setCanvas = &SetCanvas;
     obj->printToScreen = &PrintToScreen;
     obj->plotPointWithNote =  &PlotPointWithNote;
+    obj->cleanCanvas = &CleanCanvas;
 
 
     return obj;

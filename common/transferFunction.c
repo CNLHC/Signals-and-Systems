@@ -9,7 +9,6 @@ void SetZeros(transferFunc * self, double complex * zeros){
     self->_zeros = zeros;
 }
 void SetPolars(transferFunc * self, double complex *polars){
-
     assert(self->_polars==NULL&&"零点已经设置");
     self->_polars=polars;
 }
@@ -22,17 +21,12 @@ double AFFunc(transferFunc *self, double w)
     int pN = (int)(self->_polars[0]);
     double complex cw = 0 + w*I;
     double sum_N=1,sum_M=1;
-    for (int i = 1;i <= zN  ; i ++){
+    for (int i = 1;i <= zN  ; i ++)
         sum_N *=cabs(self->_zeros[i]-cw);
-        printf("zeros: %lf\n",cabs(self->_zeros[i]-cw));
-    }
-    for (int i = 1;i <= pN  ; i ++){
+    for (int i = 1;i <= pN  ; i ++)
         sum_M *=cabs(self->_polars[i]-cw);
-        printf("polars: %lf\n",cabs(self->_polars[i]-cw));
-    }
     return  sum_N/sum_M;
 }
-
 
 double PFFunc(transferFunc *self, double w)
 {

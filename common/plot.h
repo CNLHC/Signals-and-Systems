@@ -17,6 +17,7 @@ struct cplot{
     int __boundSetFlag;
     int __showAxiesFlag;
     canvas *__Canv;
+    void (*cleanCanvas)(cplot * self);
     /*!
      * 在Canvas上绘制一个一元实变函数的图像
      * @param self 对象
