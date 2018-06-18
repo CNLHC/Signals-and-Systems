@@ -30,6 +30,11 @@ int main()
     }
     //进行时移。事实上Y(n)目前是右端项为X(n)时的冲击响应。由LTI性质,Y(n-1)为X(n-1)时的冲击响应,记H(n)
     #define H(n) (Y(n-1))
+    FILE * TransferResult=fopen("./TimeDomainTransferFunction.csv","w");
+    for(i=0;i<=10;i++){
+        fprintf(TransferResult,"%d,%.2f\n",i,H(i));
+    }
+
     //计算传递函数
     double complex  G[1001];
     #define  MapZoomIn(x) ((x/1000.0)*2*PI)
