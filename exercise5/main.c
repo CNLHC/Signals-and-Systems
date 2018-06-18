@@ -31,11 +31,11 @@ int main()
     //进行时移。事实上Y(n)目前是右端项为X(n)时的冲击响应。由LTI性质,Y(n-1)为X(n-1)时的冲击响应,记H(n)
     #define H(n) (Y(n-1))
     //计算传递函数
-    double complex  G[1000];
+    double complex  G[1001];
     #define  MapZoomIn(x) ((x/1000.0)*2*PI)
     #define MapZoomOut(x) ((int)((x/(2.0*PI))*1000.0))
 
-    for(i=0;i<1000;i++){
+    for(i=0;i<=1000;i++){
         G[i]=0;
         int n=0;
         for (n=0;n<=10;n++)
@@ -55,7 +55,7 @@ int main()
     plter->setBound(plter,0,2*PI,0,9);
     plter->cleanCanvas(plter);
     plter->plotReal(plter,AMP,'x');
-    for(double di=0;di<=1.99*PI;di+=0.1*PI)
+    for(double di=0;di<=2.0*PI;di+=0.1*PI)
         fprintf(result,"%.3f %.3f\n",di,AMP(di));
     for(i=0;i<1000;i++)
         fprintf(temp,"%.3f %.3f\n",MapZoomIn(i),AMP(MapZoomIn(i)));
@@ -69,7 +69,7 @@ int main()
     plter->setBound(plter,0,2*PI,-4,4);
     plter->cleanCanvas(plter);
     plter->plotReal(plter,Phrase,'x');
-    for(double di=0;di<=1.99*PI;di+=0.1*PI)
+    for(double di=0;di<=2.0*PI;di+=0.1*PI)
         fprintf(result,"%.3f %.3f\n",di,Phrase(di));
     for(i=0;i<1000;i++)
         fprintf(temp,"%.3f %.3f\n",MapZoomIn(i),Phrase(MapZoomIn(i)));
