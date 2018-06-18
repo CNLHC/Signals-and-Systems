@@ -83,5 +83,5 @@ int main()
     fprintf(gnuplotPipe, "plot '.AMP.temp' using 1:2 title \"幅频曲线\", \\\n");
     fprintf(gnuplotPipe2, "set xzeroaxis \n");
     fprintf(gnuplotPipe2, "set style data lines \n");
-    fprintf(gnuplotPipe2, "plot 'PHRASE_Result.csv' using 1:2 title \"幅频曲线\", \\\n");
+    fprintf(gnuplotPipe2, "plot 'PHRASE_Result.csv' using 1:2 title \"相频曲线\", \\\n");
 }
